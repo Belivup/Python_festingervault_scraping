@@ -29,7 +29,7 @@ def parse_products(url):
 
     try:
         demo_link = r.html.find('.elementor-button-wrapper a', first=True).attrs['href']
-    except AttributeError as err:
+    except (AttributeError, KeyError) as err:
         demo_link = ""
 
     try:
@@ -93,7 +93,7 @@ def page_len():
 def main():
     results = []
 
-    for x in range(1, page_len()):
+    for x in range(10, page_len()):
         urls = get_products_links(x)
         for url in urls:
             results.append(parse_products(url))

@@ -29,7 +29,7 @@ def parse_products(url):
 
     try:
         demo_link = r.html.find('.elementor-button-wrapper a', first=True).attrs['href']
-    except AttributeError as err:
+    except (AttributeError, KeyError) as err:
         demo_link = ""
 
     try:
